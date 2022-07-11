@@ -1,3 +1,4 @@
+using BlazorLdapAuth.Server.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +26,7 @@ namespace BlazorLdapAuth.Server
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddSingleton<UserAccountService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
