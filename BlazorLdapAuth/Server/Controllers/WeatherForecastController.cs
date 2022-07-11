@@ -1,4 +1,5 @@
 ﻿using BlazorLdapAuth.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -25,6 +26,7 @@ namespace BlazorLdapAuth.Server.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
