@@ -1,4 +1,5 @@
 ﻿@page "/"
+@inject IJSRuntime js
 
 <AuthorizeView>
     <Authorized>
@@ -12,3 +13,26 @@
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+<AuthorizeView>
+    <Authorized>
+        <br />
+        <br />
+
+        <button class="btn btn-outline-primary" @onclick="DisplayHelloAlert">Powitanie</button>
+    </Authorized>
+</AuthorizeView>
+
+@code
+{
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationState { get; set; }
+
+    private async Task DisplayHelloAlert()
+    {
+        var authState = await authenticationState;
+        var message = $"Witaj {authState.User.Identity.Name}!";
+        await js.InvokeVoidAsync("alert", message);
+
+    }
+}
