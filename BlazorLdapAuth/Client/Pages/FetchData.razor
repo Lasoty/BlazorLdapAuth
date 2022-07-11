@@ -1,7 +1,11 @@
 ﻿@page "/fetchdata"
 @attribute [Authorize(Roles = "Administrator")]
+@using BlazorLdapAuth.Client.Authentication
 @using BlazorLdapAuth.Shared
+@using System.Net.Http.Headers
 @inject HttpClient Http
+@inject NavigationManager navManager
+@inject AuthenticationStateProvider authStateProvider
 
 
 <h1>Weather forecast</h1>
@@ -42,7 +46,14 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        var token = await ((CustomAuthenticationStateProvider)authStateProvider).GetToken();
+        if (!string.IsNullOrEmpty(token))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token);
+            forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        }
+        else
+            navManager.NavigateTo("/login");
     }
 
 }
