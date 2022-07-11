@@ -1,0 +1,23 @@
+﻿@page "/login"
+
+<div class="row">
+    <div class="col-lg-4 offset-lg-4 pt-4 pb-4 border">
+        <div class="mb-3 text-center">
+            <h3>LOGIN</h3>
+        </div>
+        <div class="mb-3">
+            <label>Nazwa użytkownika</label>
+            <input @bind="request.UserName" class="form-control" placeholder="Nazwa użytkownika" />
+        </div>
+
+        <div class="mb-3">
+            <label>Hasło</label>
+            <input type="password" @bind="request.Password" class="form-control" placeholder="Hasło" />
+        </div>
+
+        <div class="mb-3 d-grid gap-2">
+            <button @onclick="OnAuthenticate" class="btn btn-primary">Zaloguj</button>
+        </div>
+
+    </div>
+</div>

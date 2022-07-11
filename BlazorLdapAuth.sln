@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorLdapAuth.Server", "BlazorLdapAuth\Server\BlazorLdapAuth.Server.csproj", "{387AD13A-14D0-48C7-A173-8A412B4893DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLdapAuth.Server", "BlazorLdapAuth\Server\BlazorLdapAuth.Server.csproj", "{387AD13A-14D0-48C7-A173-8A412B4893DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorLdapAuth.Client", "BlazorLdapAuth\Client\BlazorLdapAuth.Client.csproj", "{870B4EF6-F0A3-49B8-9F3B-638E5162413A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLdapAuth.Client", "BlazorLdapAuth\Client\BlazorLdapAuth.Client.csproj", "{870B4EF6-F0A3-49B8-9F3B-638E5162413A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorLdapAuth.Shared", "BlazorLdapAuth\Shared\BlazorLdapAuth.Shared.csproj", "{BB8D273A-893E-4891-B39E-D6225B443FD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLdapAuth.Shared", "BlazorLdapAuth\Shared\BlazorLdapAuth.Shared.csproj", "{BB8D273A-893E-4891-B39E-D6225B443FD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
