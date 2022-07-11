@@ -27,10 +27,16 @@ namespace BlazorLdapAuth.Server.Authentication
             if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password))
                 return null;
 
-            var userAccount = userAccountService.GetUserAccountByUserName(userName);
+            //UserAccount userAccount = userAccountService.GetUserAccountByUserName(userName);
+            UserAccount userAccount = new UserAccount
+            {
+                UserName = userName
+            };
 
-            if (userAccount == null || !ldapService.ValidateUser(userName, password))
+            if (userAccount == null || ldapService.ValidateUser(userName, password, out string role))
                 return null;
+
+            userAccount.Role = role;
 
             // Generujemy token JWT
             var tokenExpiryTimeStamp = DateTime.Now.AddMinutes(JWT_TOKEN_VALIDITY_MINS);
