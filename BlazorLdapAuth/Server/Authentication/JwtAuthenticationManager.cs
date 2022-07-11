@@ -14,10 +14,12 @@ namespace BlazorLdapAuth.Server.Authentication
 
         public const int JWT_TOKEN_VALIDITY_MINS = 20;
         private readonly UserAccountService userAccountService;
+        private readonly ILdapService ldapService;
 
-        public JwtAuthenticationManager(UserAccountService userAccountService)
+        public JwtAuthenticationManager(UserAccountService userAccountService, ILdapService ldapService)
         {
             this.userAccountService = userAccountService;
+            this.ldapService = ldapService;
         }
 
         public UserSession GenerateJwtToken(string userName, string password)
@@ -26,7 +28,8 @@ namespace BlazorLdapAuth.Server.Authentication
                 return null;
 
             var userAccount = userAccountService.GetUserAccountByUserName(userName);
-            if (userAccount == null || userAccount.Password != password)
+
+            if (userAccount == null || !ldapService.ValidateUser(userName, password))
                 return null;
 
             // Generujemy token JWT

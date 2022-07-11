@@ -31,6 +31,7 @@ namespace BlazorLdapAuth.Server
             services.AddRazorPages();
             services.AddSingleton<UserAccountService>();
             services.AddScoped<JwtAuthenticationManager>();
+            services.AddScoped<ILdapService, LdapService>();
 
             services.AddAuthentication(option =>
             {
